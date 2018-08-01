@@ -6,6 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
+import RadioGroup from 'react-native-radio-buttons-group';
 
 export default class RegistrationForm extends React.Component {
     constructor(props) {
@@ -13,7 +14,20 @@ export default class RegistrationForm extends React.Component {
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            sex: '',
+            data: [
+                {
+                    label: 'Male',
+                    value: 'male',
+                    color: 'white',
+                },
+                {
+                    label: 'Female',
+                    value: 'female',
+                    color: 'white',                    
+                }
+            ]
         };
     }
 
@@ -41,6 +55,13 @@ export default class RegistrationForm extends React.Component {
                     secureTextEntry={true}
                     style={styles.textInput}
                 />
+                <Text style={styles.btnFont}> Sex:  </Text>
+                <RadioGroup 
+                    radioButtons={this.state.data} 
+                    onPress={(data) => this.setState({ sex: data })}
+                    flexDirection='row'
+                    style={styles.radioBtn}
+                />
 
                 <TouchableOpacity
                     style={styles.button}
@@ -49,7 +70,12 @@ export default class RegistrationForm extends React.Component {
                     <Text style={styles.btnFont}> Sign up </Text>
                 </TouchableOpacity>
 
-                <Text style={styles.already}> Already Registerd? </Text>
+                <Text 
+                    style={styles.already}
+                    onPress={() => this.props.navigation.navigate('Login')}
+                >
+                    Already Registerd?
+                </Text>
             </View>
         );
     }
@@ -57,7 +83,10 @@ export default class RegistrationForm extends React.Component {
 
 const styles = StyleSheet.create({
     regForm: {
-        alignSelf: 'stretch'
+        flex: 1,
+        justifyContent: 'center',
+        padding: 60,
+        backgroundColor: '#36485f',
     },
     regHeader: {
         color: '#fff',
@@ -90,5 +119,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 40,
         color: '#fff'
+    },
+    radioBtn: {
+        margin: 30
     }
 });

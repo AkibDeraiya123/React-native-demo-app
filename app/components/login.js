@@ -42,7 +42,12 @@ export default class RegistrationForm extends React.Component {
                     <Text style={styles.btnFont}> Login </Text>
                 </TouchableOpacity>
 
-                <Text style={styles.already}> Not Register? </Text>
+                <Text 
+                    style={styles.already}
+                    onPress={() => this.props.navigation.navigate('Signup')}
+                >
+                    Not Registerd?
+                </Text>
             </View>
         );
     }
@@ -50,7 +55,10 @@ export default class RegistrationForm extends React.Component {
 
 const styles = StyleSheet.create({
     regForm: {
-        alignSelf: 'stretch'
+        flex: 1,
+        justifyContent: 'center',
+        padding: 60,
+        backgroundColor: '#36485f',
     },
     regHeader: {
         color: '#fff',

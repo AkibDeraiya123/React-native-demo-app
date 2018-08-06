@@ -5,11 +5,13 @@ import React from 'react';
 import Signup from './app/components/signup';
 // Login component
 import Login from './app/components/login';
+import Camera from './app/components/camera';
 
 const RootStack = createStackNavigator(
   {
     Signup,
     Login,
+    Camera
   },
   {
     initialRouteName: 'Login',

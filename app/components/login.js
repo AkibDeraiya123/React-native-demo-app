@@ -48,6 +48,13 @@ export default class RegistrationForm extends React.Component {
                 >
                     Not Registerd?
                 </Text>
+
+                <Text 
+                    style={styles.already}
+                    onPress={() => this.props.navigation.navigate('Camera')}
+                >
+                    Not Registerd?
+                </Text>
             </View>
         );
     }
